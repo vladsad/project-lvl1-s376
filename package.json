@@ -1,8 +1,11 @@
 {
   "name": "hexlet-brain-games-vladsad",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "version": "1.0.1",
+  "description": "В рамках проекта необходимо реализовать набор мини-игр, запускаемых из консоли. Эти игры похожи на то, что обычно называют 'Brain Games'.",
+  "keywords": [
+    "hexlet",
+    "brain-games"
+  ],
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
@@ -18,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/vladsad/project-lvl1-s376.git"
   },
-  "author": "",
+  "author": "Vladislav Sadretdinov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vladsad/project-lvl1-s376/issues"
@@ -29,6 +32,7 @@
     "@babel/core": "^7.1.5",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.5",
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "readline-sync": "^1.4.9"
   }
 }
