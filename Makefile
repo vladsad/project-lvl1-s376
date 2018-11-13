@@ -8,6 +8,6 @@ publish:
 	npm publish
 
 lint:
-	npx eslint
+	npx eslint .
 
 .PHONY: install start publish lint
