@@ -21,32 +21,13 @@ const greeting = () => {
 };
 
 const getRandomNumber = () => Math.floor((Math.random() * 100) + 1);
+
 const isEven = number => (number % 2 === 0);
 
-const brainEvenGame = () => {
-  welcome();
-  console.log('Answer "yes" if number even otherwise answer "no".\n');
-  const userName = getUserName();
+const getRandomItemFromArray = array => array[
+  Math.floor(Math.random() * array.length)
+];
 
-  const attempts = 3;
-
-  for (let i = 0; i < attempts; i += 1) {
-    const question = getRandomNumber();
-    const rightAnswer = isEven(question) ? 'yes' : 'no';
-
-    console.log(`Question: ${question}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    if (userAnswer === rightAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-  }
-
-  console.log(`Congratulations, ${userName}!`);
+export {
+  greeting, welcome, getUserName, getRandomNumber, isEven, getRandomItemFromArray,
 };
-
-export { greeting, brainEvenGame };
