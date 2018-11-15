@@ -1,53 +1,56 @@
 import readlineSync from 'readline-sync';
 
+// Хак под винду
+// https://github.com/anseki/readline-sync/issues/33#issuecomment-212849534
+process.stdin.isTTY = true;
+process.stdout.isTTY = true;
+
 let userName;
 
-const greeting = (game = 'brain-games') => {
+const welcome = () => {
   console.log('Welcome to the Brain Games!');
+};
 
-  if (game === 'brain-even') {
-    console.log('Answer "yes" if number even otherwise answer "no".\n');
-  }
-
-  // Хак под винду
-  // https://github.com/anseki/readline-sync/issues/33#issuecomment-212849534
-  process.stdin.isTTY = true;
-  process.stdout.isTTY = true;
-
+const getUserName = () => {
   userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello ${userName}!\n`);
+};
 
-  if (game !== 'brain-even') {
-    console.log(`Hello ${userName}!`);
-  } else {
-    console.log(`Hello ${userName}!\n`);
-  }
+const showGameDescription = (description) => {
+  console.log(description);
+};
+
+const greeting = () => {
+  welcome();
+  getUserName();
 };
 
 const getRandomNumber = () => Math.floor((Math.random() * 100) + 1);
+const isEven = number => (number % 2 === 0);
+
 
 const brainEvenGame = () => {
-  let winCounter = 0;
-  do {
-    const randomNumber = getRandomNumber();
-    const isEvenNumber = randomNumber % 2 === 0 ? 'yes' : 'no';
+  welcome();
+  showGameDescription('Answer "yes" if number even otherwise answer "no".\n');
+  getUserName();
 
-    console.log(`Question: ${randomNumber}`);
-    const answer = readlineSync.question('Your answer: ');
+  for (let i = 0; i < 3; i += 1) {
+    const numberForGame = getRandomNumber();
+    const rightAnswer = isEven(numberForGame) ? 'yes' : 'no';
 
-    if (answer === isEvenNumber) {
+    console.log(`Question: ${numberForGame}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (userAnswer === rightAnswer) {
       console.log('Correct!');
-      winCounter += 1;
     } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${isEvenNumber}'.`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
-      break;
+      return;
     }
   }
-  while (winCounter !== 3);
 
-  if (winCounter === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export { greeting, brainEvenGame };

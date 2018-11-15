@@ -1,6 +1,6 @@
 {
   "name": "hexlet-brain-games-vladsad",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "В рамках проекта необходимо реализовать набор мини-игр, запускаемых из консоли. Эти игры похожи на то, что обычно называют 'Brain Games'.",
   "keywords": [
     "hexlet",
