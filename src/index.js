@@ -5,19 +5,13 @@ import readlineSync from 'readline-sync';
 process.stdin.isTTY = true;
 process.stdout.isTTY = true;
 
-let userName;
-
 const welcome = () => {
   console.log('Welcome to the Brain Games!');
 };
 
 const getUserName = () => {
-  userName = readlineSync.question('May I have your name? ');
+  const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello ${userName}!\n`);
-};
-
-const showGameDescription = (description) => {
-  console.log(description);
 };
 
 const greeting = () => {
@@ -28,17 +22,18 @@ const greeting = () => {
 const getRandomNumber = () => Math.floor((Math.random() * 100) + 1);
 const isEven = number => (number % 2 === 0);
 
-
 const brainEvenGame = () => {
   welcome();
-  showGameDescription('Answer "yes" if number even otherwise answer "no".\n');
-  getUserName();
+  console.log('Answer "yes" if number even otherwise answer "no".\n');
+  const userName = getUserName();
 
-  for (let i = 0; i < 3; i += 1) {
-    const numberForGame = getRandomNumber();
-    const rightAnswer = isEven(numberForGame) ? 'yes' : 'no';
+  const attempts = 3;
 
-    console.log(`Question: ${numberForGame}`);
+  for (let i = 0; i < attempts; i += 1) {
+    const question = getRandomNumber();
+    const rightAnswer = isEven(question) ? 'yes' : 'no';
+
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer === rightAnswer) {
