@@ -12,6 +12,7 @@ const welcome = () => {
 const getUserName = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello ${userName}!\n`);
+  return userName;
 };
 
 const greeting = () => {
