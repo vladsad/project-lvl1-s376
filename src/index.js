@@ -28,6 +28,19 @@ const getRandomItemFromArray = array => array[
   Math.floor(Math.random() * array.length)
 ];
 
+const twoNumberNod = (number1, number2) => {
+  let x = number1;
+  let y = number2;
+
+  while (y) {
+    const t = y;
+    y = x % y;
+    x = t;
+  }
+
+  return x;
+};
+
 export {
-  greeting, welcome, getUserName, getRandomNumber, isEven, getRandomItemFromArray,
+  greeting, welcome, getUserName, getRandomNumber, isEven, getRandomItemFromArray, twoNumberNod,
 };

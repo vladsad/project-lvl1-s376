@@ -1,34 +1,21 @@
 import readlineSync from 'readline-sync';
 import {
-  welcome, getUserName, getRandomNumber, getRandomItemFromArray,
+  welcome, getUserName, getRandomNumber, twoNumberNod,
 } from '../index';
 
-const brainCalcGame = () => {
+const brainGcdGame = () => {
   welcome();
-  console.log('What is the result of the expression?\n');
+  console.log('Find the greatest common divisor of given numbers.\n');
   const userName = getUserName();
 
   const attempts = 3;
-  const mathSignArray = ['+', '-', '*'];
 
   for (let i = 0; i < attempts; i += 1) {
-    const mathSign = getRandomItemFromArray(mathSignArray);
     const number1 = getRandomNumber();
     const number2 = getRandomNumber();
-    const question = `${number1} ${mathSign} ${number2}`;
 
-    let rightAnswer;
-    switch (mathSign) {
-      case '+':
-        rightAnswer = number1 + number2;
-        break;
-      case '-':
-        rightAnswer = number1 - number2;
-        break;
-      default:
-        rightAnswer = number1 * number2;
-        break;
-    }
+    const question = `${number1} ${number2}`;
+    const rightAnswer = twoNumberNod(number1, number2);
 
     console.log(`Question: ${question}`);
     const userAnswer = Number(readlineSync.question('Your answer: '));
@@ -45,4 +32,4 @@ const brainCalcGame = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export default brainCalcGame;
+export default brainGcdGame;
