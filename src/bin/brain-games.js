@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
-import { greeting } from '..';
+import {
+  welcomeMsg,
+} from '../printMsg';
+import {
+  getUserName,
+} from '../gameCore';
 
-greeting();
+welcomeMsg();
+getUserName();

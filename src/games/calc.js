@@ -1,48 +1,46 @@
-import readlineSync from 'readline-sync';
 import {
-  welcome, getUserName, getRandomNumber, getRandomItemFromArray,
-} from '../index';
+  getUserName, playGame,
+} from '../gameCore';
+import {
+  welcomeMsg, printMsg,
+} from '../printMsg';
+import {
+  getRandomNumber, getRandomItemFromArray,
+} from '../utilits';
 
 const brainCalcGame = () => {
-  welcome();
-  console.log('What is the result of the expression?\n');
+  welcomeMsg();
+  printMsg('What is the result of the expression?\n');
+
   const userName = getUserName();
 
   const attempts = 3;
+  const questions = [];
+  const rightAnswers = [];
+
   const mathSignArray = ['+', '-', '*'];
 
   for (let i = 0; i < attempts; i += 1) {
     const mathSign = getRandomItemFromArray(mathSignArray);
     const number1 = getRandomNumber();
     const number2 = getRandomNumber();
-    const question = `${number1} ${mathSign} ${number2}`;
 
-    let rightAnswer;
+    questions.push(`${number1} ${mathSign} ${number2}`);
+
     switch (mathSign) {
       case '+':
-        rightAnswer = number1 + number2;
+        rightAnswers.push((number1 + number2).toString());
         break;
       case '-':
-        rightAnswer = number1 - number2;
+        rightAnswers.push((number1 - number2).toString());
         break;
       default:
-        rightAnswer = number1 * number2;
+        rightAnswers.push((number1 * number2).toString());
         break;
-    }
-
-    console.log(`Question: ${question}`);
-    const userAnswer = Number(readlineSync.question('Your answer: '));
-
-    if (userAnswer === rightAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
     }
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  playGame(userName, questions, rightAnswers);
 };
 
 export default brainCalcGame;

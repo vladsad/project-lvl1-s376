@@ -1,32 +1,30 @@
-import readlineSync from 'readline-sync';
 import {
-  welcome, getUserName, getRandomNumber, isEven,
-} from '../index';
+  isEven, getRandomNumber,
+} from '../utilits';
+import {
+  welcomeMsg, printMsg,
+} from '../printMsg';
+import {
+  getUserName, playGame,
+} from '../gameCore';
 
 const brainEvenGame = () => {
-  welcome();
-  console.log('Answer "yes" if number even otherwise answer "no".\n');
+  welcomeMsg();
+  printMsg('Answer "yes" if number even otherwise answer "no".\n');
+
   const userName = getUserName();
 
   const attempts = 3;
+  const questions = [];
+  const rightAnswers = [];
 
   for (let i = 0; i < attempts; i += 1) {
-    const question = getRandomNumber();
-    const rightAnswer = isEven(question) ? 'yes' : 'no';
-
-    console.log(`Question: ${question}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    if (userAnswer === rightAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
+    const number = getRandomNumber();
+    questions.push(number);
+    rightAnswers.push(isEven(number) ? '\'yes\'' : '\'no\'');
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  playGame(userName, questions, rightAnswers);
 };
 
 export default brainEvenGame;
