@@ -12,6 +12,10 @@ const winGameMsg = (userName) => {
   console.log(`Congratulations, ${userName}!`);
 };
 
+const isString = object => typeof object === 'string';
+
+const formatUserAnswer = (userAnswer, rightAnswer) => (isString(rightAnswer) ? `'${userAnswer}'` : Number(userAnswer));
+
 const loseGameMsg = (userName, userAnswer, rightAnswer) => {
   console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
   console.log(`Let's try again, ${userName}!`);
@@ -29,28 +33,20 @@ const printQuestionMsg = (question) => {
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
-const makeQuestionAnswer = (question, answer) => (msg) => {
-  switch (msg) {
-    case 'getQuestion':
-      return question();
-    case 'getAnswer':
-      return answer(question());
-    default:
-      return '!!!error msg!!!';
-  }
-};
+const playGame = (gameDescription, questionAnswerGenerator) => {
+  welcomeMsg();
+  printMsg(gameDescription);
 
-const getQuestion = questionAnswer => questionAnswer('getQuestion');
-const getAnswer = questionAnswer => questionAnswer('getAnswer');
+  const userName = getUserName();
 
-const playGame = (userName, question, answer) => {
   const attempts = 3;
-
   for (let i = 0; i < attempts; i += 1) {
-    const questionAnswer = makeQuestionAnswer(question, answer);
-    printQuestionMsg(getQuestion(questionAnswer));
-    const userAnswer = getUserAnswer();
-    const rightAnswer = getAnswer(questionAnswer);
+    const questionAnswer = questionAnswerGenerator();
+    printQuestionMsg(questionAnswer[0]);
+    let userAnswer = getUserAnswer();
+    const rightAnswer = questionAnswer[1];
+
+    userAnswer = formatUserAnswer(userAnswer, rightAnswer);
 
     if (userAnswer === rightAnswer) {
       printMsg('Correct!');

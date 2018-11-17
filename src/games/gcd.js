@@ -1,7 +1,7 @@
 import getRandomNumber from '../utilits';
 
 import {
-  getUserName, playGame, welcomeMsg, printMsg,
+  playGame,
 } from '../gameCore';
 
 const twoNumberNod = (number1, number2) => {
@@ -17,24 +17,17 @@ const twoNumberNod = (number1, number2) => {
   return x;
 };
 
+const makeQuestionAnswer = () => {
+  const number1 = getRandomNumber();
+  const number2 = getRandomNumber();
+  const question = `${number1} ${number2}`;
+  const answer = twoNumberNod(number1, number2);
+  return [question, answer];
+};
+
 const brainGcdGame = () => {
-  welcomeMsg();
-  printMsg('Find the greatest common divisor of given numbers.\n');
-  const userName = getUserName();
-
-  const attempts = 3;
-  const questions = [];
-  const rightAnswers = [];
-
-  for (let i = 0; i < attempts; i += 1) {
-    const number1 = getRandomNumber();
-    const number2 = getRandomNumber();
-
-    questions.push(`${number1} ${number2}`);
-    rightAnswers.push((twoNumberNod(number1, number2)).toString());
-  }
-
-  playGame(userName, questions, rightAnswers);
+  const gameDescription = 'Find the greatest common divisor of given numbers.\n';
+  playGame(gameDescription, makeQuestionAnswer);
 };
 
 export default brainGcdGame;

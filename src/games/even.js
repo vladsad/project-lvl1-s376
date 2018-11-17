@@ -1,20 +1,22 @@
 import getRandomNumber from '../utilits';
 
 import {
-  welcomeMsg, printMsg, getUserName, playGame,
+  playGame,
 } from '../gameCore';
 
 const isEven = number => (number % 2 === 0);
 
+const makeQuestionAnswer = () => {
+  const number = getRandomNumber();
+  const question = number;
+  const rightAnswer = isEven(number) ? '\'yes\'' : '\'no\'';
+
+  return [question, rightAnswer];
+};
+
 const brainEvenGame = () => {
-  welcomeMsg();
-  printMsg('Answer "yes" if number even otherwise answer "no".\n');
-
-  const userName = getUserName();
-  const question = getRandomNumber;
-  const rightAnswer = number => (isEven(number) ? '\'yes\'' : '\'no\'');
-
-  playGame(userName, question, rightAnswer);
+  const gameDescription = 'Answer "yes" if number even otherwise answer "no".\n';
+  playGame(gameDescription, makeQuestionAnswer);
 };
 
 export default brainEvenGame;
