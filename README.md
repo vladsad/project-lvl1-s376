@@ -5,9 +5,9 @@
 <details>
 <summary>Brain-Even Game</summary>
 <a href="https://asciinema.org/a/OEehvJKUb1TBInmkobbsIqqYj" target="_blank"><img src="https://asciinema.org/a/OEehvJKUb1TBInmkobbsIqqYj.svg" /></a>
-<details>
+</details>
 
 <details>
 <summary>Brain-Calc Game</summary>
 <a href="https://asciinema.org/a/d82JDP6o3R3LshCL86ApsSRWP" target="_blank"><img src="https://asciinema.org/a/d82JDP6o3R3LshCL86ApsSRWP.svg" /></a>
-<details>
+</details>

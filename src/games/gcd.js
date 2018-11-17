@@ -1,12 +1,21 @@
+import getRandomNumber from '../utilits';
+
 import {
-  getRandomNumber, twoNumberNod,
-} from '../utilits';
-import {
-  welcomeMsg, printMsg,
-} from '../printMsg';
-import {
-  getUserName, playGame,
+  getUserName, playGame, welcomeMsg, printMsg,
 } from '../gameCore';
+
+const twoNumberNod = (number1, number2) => {
+  let x = number1;
+  let y = number2;
+
+  while (y) {
+    const t = y;
+    y = x % y;
+    x = t;
+  }
+
+  return x;
+};
 
 const brainGcdGame = () => {
   welcomeMsg();

@@ -1,30 +1,20 @@
+import getRandomNumber from '../utilits';
+
 import {
-  isEven, getRandomNumber,
-} from '../utilits';
-import {
-  welcomeMsg, printMsg,
-} from '../printMsg';
-import {
-  getUserName, playGame,
+  welcomeMsg, printMsg, getUserName, playGame,
 } from '../gameCore';
+
+const isEven = number => (number % 2 === 0);
 
 const brainEvenGame = () => {
   welcomeMsg();
   printMsg('Answer "yes" if number even otherwise answer "no".\n');
 
   const userName = getUserName();
+  const question = getRandomNumber;
+  const rightAnswer = number => (isEven(number) ? '\'yes\'' : '\'no\'');
 
-  const attempts = 3;
-  const questions = [];
-  const rightAnswers = [];
-
-  for (let i = 0; i < attempts; i += 1) {
-    const number = getRandomNumber();
-    questions.push(number);
-    rightAnswers.push(isEven(number) ? '\'yes\'' : '\'no\'');
-  }
-
-  playGame(userName, questions, rightAnswers);
+  playGame(userName, question, rightAnswer);
 };
 
 export default brainEvenGame;

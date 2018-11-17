@@ -1,12 +1,12 @@
 import {
-  getUserName, playGame,
+  getUserName, playGame, welcomeMsg, printMsg,
 } from '../gameCore';
-import {
-  welcomeMsg, printMsg,
-} from '../printMsg';
-import {
-  getRandomNumber, getRandomItemFromArray,
-} from '../utilits';
+
+import getRandomNumber from '../utilits';
+
+const getRandomItemFromArray = array => array[
+  Math.floor(Math.random() * array.length)
+];
 
 const brainCalcGame = () => {
   welcomeMsg();
