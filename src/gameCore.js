@@ -1,66 +1,45 @@
-// можно открыть заранее последний шаг чтобы успеть сделать
-// к утренней последней проверке?
-
 import readlineSync from 'readline-sync';
 
-const welcomeMsg = () => {
-  console.log('Welcome to the Brain Games!');
-};
-
-const printMsg = (msg = '') => {
-  console.log(msg);
-};
-
-const winGameMsg = (userName) => {
-  console.log(`Congratulations, ${userName}!`);
-};
-
-const isString = object => typeof object === 'string';
-
-const formatUserAnswer = (userAnswer, rightAnswer) => (isString(rightAnswer) ? `'${userAnswer}'` : Number(userAnswer));
-
-const loseGameMsg = (userName, userAnswer, rightAnswer) => {
-  console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-  console.log(`Let's try again, ${userName}!`);
-};
-
-const getUserName = () => {
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello ${userName}!\n`);
-  return userName;
-};
-
-const printQuestionMsg = (question) => {
-  console.log(`Question: ${question}`);
-};
-
-const getUserAnswer = () => readlineSync.question('Your answer: ');
+// ходят слухи что ментор пропускает строки
+// yes is wrong answer ;(. Correct answer was no.
+// хотя по ТЗ должно быть
+// 'yes' is wrong answer ;(. Correct answer was 'no'.
+//
+// поэтому я и пытался сначала делать проверку на типы
+// :3
+//
+// аскинему пока только с работы смогу сделать и уже постфактом для себя,так как проект кончился
+// комменарий тоже будет удален после ответа для чистоты мастер векты в репозетории
+const checkToSetQuotes = str => (str === 'yes' || str === 'no' ? `'${str}'` : str);
 
 const attempts = 3;
 
 const playGame = (gameDescription, questionAnswerGenerator) => {
-  welcomeMsg();
-  printMsg(gameDescription);
-  printMsg();
+  console.log('Welcome to the Brain Games!');
+  console.log(`${gameDescription}\n`);
 
-  const userName = getUserName();
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello ${userName}!\n`);
 
   for (let i = 0; i < attempts; i += 1) {
     const questionAnswer = questionAnswerGenerator();
-    printQuestionMsg(questionAnswer[0]);
-    let userAnswer = getUserAnswer();
-    const rightAnswer = questionAnswer[1];
+    const [question] = questionAnswer;
+    let [, answer] = questionAnswer;
 
-    userAnswer = formatUserAnswer(userAnswer, rightAnswer);
+    console.log(`Question: ${question}`);
+    let userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer === rightAnswer) {
-      printMsg('Correct!');
+    if (userAnswer === answer) {
+      console.log('Correct!');
     } else {
-      loseGameMsg(userName, userAnswer, rightAnswer);
+      userAnswer = checkToSetQuotes(userAnswer);
+      answer = checkToSetQuotes(answer);
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${answer}.`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
   }
-  winGameMsg(userName);
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default playGame;

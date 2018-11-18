@@ -1,6 +1,6 @@
-import playGame from '../gameCore';
-
 import getRandomNumber from '../utilities';
+
+import playGame from '../gameCore';
 
 const gameDescription = 'What is the result of the expression?';
 
@@ -23,11 +23,7 @@ const makeQuestionAnswer = () => {
       answer = number1 * number2;
       break;
   }
-  return [question, answer];
+  return [question, answer.toString()];
 };
 
-const brainCalcGame = () => {
-  playGame(gameDescription, makeQuestionAnswer);
-};
-
-export default brainCalcGame;
+export default () => playGame(gameDescription, makeQuestionAnswer);

@@ -22,11 +22,7 @@ const makeQuestionAnswer = () => {
   const number2 = getRandomNumber();
   const question = `${number1} ${number2}`;
   const answer = gcd(number1, number2);
-  return [question, answer];
+  return [question, answer.toString()];
 };
 
-const brainGcdGame = () => {
-  playGame(gameDescription, makeQuestionAnswer);
-};
-
-export default brainGcdGame;
+export default () => playGame(gameDescription, makeQuestionAnswer);

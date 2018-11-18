@@ -4,17 +4,14 @@ import playGame from '../gameCore';
 
 const isEven = number => (number % 2 === 0);
 
+const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
+
 const makeQuestionAnswer = () => {
   const number = getRandomNumber();
   const question = number;
-  const rightAnswer = isEven(number) ? '\'yes\'' : '\'no\'';
+  const rightAnswer = isEven(number) ? 'yes' : 'no';
 
   return [question, rightAnswer];
 };
 
-const brainEvenGame = () => {
-  const gameDescription = 'Answer "yes" if number even otherwise answer "no".\n';
-  playGame(gameDescription, makeQuestionAnswer);
-};
-
-export default brainEvenGame;
+export default () => playGame(gameDescription, makeQuestionAnswer);

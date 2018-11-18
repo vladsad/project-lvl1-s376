@@ -1,6 +1,6 @@
-import playGame from '../gameCore';
-
 import getRandomNumber from '../utilities';
+
+import playGame from '../gameCore';
 
 const makeProgression = (start, range, length) => {
   const progression = [];
@@ -10,27 +10,22 @@ const makeProgression = (start, range, length) => {
   return progression;
 };
 
-const firstElement = getRandomNumber();
-const step = getRandomNumber();
+const gameDescription = 'What is the result of the expression?';
 const length = 10;
 
 const makeQuestionAnswer = () => {
+  const firstElement = getRandomNumber();
+  const step = getRandomNumber();
   const positionForGuess = getRandomNumber(0, length - 1);
   const hiddenElementSign = '..';
   const progression = makeProgression(firstElement,
     step, length);
 
-  const rightAnswer = progression[positionForGuess];
+  const answer = progression[positionForGuess];
   progression[positionForGuess] = hiddenElementSign;
   const question = progression.join(' ');
 
-  return [question, rightAnswer];
+  return [question, answer.toString()];
 };
 
-const gameDescription = 'What is the result of the expression?\n';
-
-const brainProgressionGame = () => {
-  playGame(gameDescription, makeQuestionAnswer);
-};
-
-export default brainProgressionGame;
+export default () => playGame(gameDescription, makeQuestionAnswer);
