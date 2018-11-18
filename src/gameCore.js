@@ -1,10 +1,13 @@
+// можно открыть заранее последний шаг чтобы успеть сделать
+// к утренней последней проверке?
+
 import readlineSync from 'readline-sync';
 
 const welcomeMsg = () => {
   console.log('Welcome to the Brain Games!');
 };
 
-const printMsg = (msg) => {
+const printMsg = (msg = '') => {
   console.log(msg);
 };
 
@@ -33,13 +36,15 @@ const printQuestionMsg = (question) => {
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
+const attempts = 3;
+
 const playGame = (gameDescription, questionAnswerGenerator) => {
   welcomeMsg();
   printMsg(gameDescription);
+  printMsg();
 
   const userName = getUserName();
 
-  const attempts = 3;
   for (let i = 0; i < attempts; i += 1) {
     const questionAnswer = questionAnswerGenerator();
     printQuestionMsg(questionAnswer[0]);
@@ -58,6 +63,4 @@ const playGame = (gameDescription, questionAnswerGenerator) => {
   winGameMsg(userName);
 };
 
-export {
-  getUserName, playGame, getUserAnswer, welcomeMsg, printMsg, winGameMsg, loseGameMsg,
-};
+export default playGame;

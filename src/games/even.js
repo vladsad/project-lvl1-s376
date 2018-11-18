@@ -1,8 +1,6 @@
-import getRandomNumber from '../utilits';
+import getRandomNumber from '../utilities';
 
-import {
-  playGame,
-} from '../gameCore';
+import playGame from '../gameCore';
 
 const isEven = number => (number % 2 === 0);
 

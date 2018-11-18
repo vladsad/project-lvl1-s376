@@ -1,10 +1,8 @@
-import getRandomNumber from '../utilits';
+import getRandomNumber from '../utilities';
 
-import {
-  playGame,
-} from '../gameCore';
+import playGame from '../gameCore';
 
-const twoNumberNod = (number1, number2) => {
+const gcd = (number1, number2) => {
   let x = number1;
   let y = number2;
 
@@ -17,16 +15,17 @@ const twoNumberNod = (number1, number2) => {
   return x;
 };
 
+const gameDescription = 'Find the greatest common divisor of given numbers.';
+
 const makeQuestionAnswer = () => {
   const number1 = getRandomNumber();
   const number2 = getRandomNumber();
   const question = `${number1} ${number2}`;
-  const answer = twoNumberNod(number1, number2);
+  const answer = gcd(number1, number2);
   return [question, answer];
 };
 
 const brainGcdGame = () => {
-  const gameDescription = 'Find the greatest common divisor of given numbers.\n';
   playGame(gameDescription, makeQuestionAnswer);
 };
 

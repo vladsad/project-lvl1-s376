@@ -1,23 +1,6 @@
-import {
-  playGame,
-} from '../gameCore';
+import playGame from '../gameCore';
 
-import getRandomNumber from '../utilits';
-
-const arrayToString = (array) => {
-  let string = '';
-  for (let i = 0; i < array.length; i += 1) {
-    string += ` ${array[i]}`;
-  }
-  return string;
-};
-
-const changeItemInArray = (_array, position, what) => {
-  const array = _array;
-  const replaceableItem = array[position];
-  array[position] = what;
-  return [array, replaceableItem];
-};
+import getRandomNumber from '../utilities';
 
 const makeProgression = (start, range, length) => {
   const progression = [];
@@ -27,26 +10,26 @@ const makeProgression = (start, range, length) => {
   return progression;
 };
 
+const firstElement = getRandomNumber();
+const step = getRandomNumber();
+const length = 10;
+
 const makeQuestionAnswer = () => {
-  const firstElementOfProgression = getRandomNumber();
-  const rangeForProgression = getRandomNumber();
-  const lengthOfProgression = 10;
+  const positionForGuess = getRandomNumber(0, length - 1);
+  const hiddenElementSign = '..';
+  const progression = makeProgression(firstElement,
+    step, length);
 
-  const positionForGuess = getRandomNumber(0, lengthOfProgression - 1);
-  const whatChange = '..';
-
-  const progression = makeProgression(firstElementOfProgression,
-    rangeForProgression, lengthOfProgression);
-  const questionAnswer = changeItemInArray(progression, positionForGuess, whatChange);
-
-  const question = arrayToString(questionAnswer[0]);
-  const rightAnswer = questionAnswer[1];
+  const rightAnswer = progression[positionForGuess];
+  progression[positionForGuess] = hiddenElementSign;
+  const question = progression.join(' ');
 
   return [question, rightAnswer];
 };
 
+const gameDescription = 'What is the result of the expression?\n';
+
 const brainProgressionGame = () => {
-  const gameDescription = 'What is the result of the expression?\n';
   playGame(gameDescription, makeQuestionAnswer);
 };
 

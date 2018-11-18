@@ -1,16 +1,13 @@
-import {
-  playGame,
-} from '../gameCore';
+import playGame from '../gameCore';
 
-import getRandomNumber from '../utilits';
+import getRandomNumber from '../utilities';
 
-const getRandomItemFromArray = array => array[
-  Math.floor(Math.random() * array.length)
-];
+const gameDescription = 'What is the result of the expression?';
+
+const mathSignArray = ['+', '-', '*'];
 
 const makeQuestionAnswer = () => {
-  const mathSignArray = ['+', '-', '*'];
-  const mathSign = getRandomItemFromArray(mathSignArray);
+  const mathSign = mathSignArray[getRandomNumber(0, mathSignArray.length - 1)];
   const number1 = getRandomNumber();
   const number2 = getRandomNumber();
   const question = `${number1} ${mathSign} ${number2}`;
@@ -30,7 +27,6 @@ const makeQuestionAnswer = () => {
 };
 
 const brainCalcGame = () => {
-  const gameDescription = 'What is the result of the expression?\n';
   playGame(gameDescription, makeQuestionAnswer);
 };
 
