@@ -11,3 +11,18 @@
 <summary>Brain-Calc Game</summary>
 <a href="https://asciinema.org/a/d82JDP6o3R3LshCL86ApsSRWP" target="_blank"><img src="https://asciinema.org/a/d82JDP6o3R3LshCL86ApsSRWP.svg" /></a>
 </details>
+
+<details>
+<summary>Brain-Gcd Game</summary>
+<a href="https://asciinema.org/a/r6N1429j8zMvryEevuYguM2SK" target="_blank"><img src="https://asciinema.org/a/r6N1429j8zMvryEevuYguM2SK.svg" /></a>
+</details>
+
+<details>
+<summary>Brain-Progression Game</summary>
+<a href="https://asciinema.org/a/J9Eh5kJzg2iRqbGORva3vjSxK" target="_blank"><img src="https://asciinema.org/a/J9Eh5kJzg2iRqbGORva3vjSxK.svg" /></a>
+</details>
+
+<details>
+<summary>Brain-Prime Game</summary>
+<a href="https://asciinema.org/a/2NU679yYPBYFaiCI3IiP5hRGC" target="_blank"><img src="https://asciinema.org/a/2NU679yYPBYFaiCI3IiP5hRGC.svg" /></a>
+</details>
