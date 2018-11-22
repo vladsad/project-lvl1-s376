@@ -1,4 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/93f3130066d923149e5c/maintainability)](https://codeclimate.com/github/vladsad/project-lvl1-s376/maintainability) [![Build Status](https://travis-ci.com/vladsad/project-lvl1-s376.svg?branch=master)](https://travis-ci.com/vladsad/project-lvl1-s376) [![dependencies Status](https://david-dm.org/vladsad/project-lvl1-s376/status.svg)](https://david-dm.org/vladsad/project-lvl1-s376)
+[![Maintainability](https://api.codeclimate.com/v1/badges/93f3130066d923149e5c/maintainability)](https://codeclimate.com/github/vladsad/project-lvl1-s376/maintainability) [![Build Status](https://travis-ci.com/vladsad/project-lvl1-s376.svg?branch=master)](https://travis-ci.com/vladsad/project-lvl1-s376) [![dependencies Status](https://david-dm.org/vladsad/project-lvl1-s376/status.svg)](https://david-dm.org/vladsad/project-lvl1-s376) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vladsad/project-lvl1-s376/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vladsad/project-lvl1-s376/?branch=master)
 
 ## Brain-Games
 
